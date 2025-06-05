@@ -18,3 +18,6 @@ export default function ChatLayout({ children }: { children: ReactNode }) {
     </div>
   );
 }
+
+
+

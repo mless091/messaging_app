@@ -70,7 +70,7 @@ export default function Sidebar({ onSelectConversation }: SidebarProps) {
   };
 
   return (
-    <div className="w-64 h-full bg-white dark:bg-gray-800 border-r flex flex-col justify-between">
+    <div className="w-64 h-full bg-white dark:bg-gray-800 border-r flex flex-col justify-between relative">
       <ul className="flex-1 overflow-y-auto">
         {conversations.map((conv) => {
           const currentUserId = session?.user?.id;
@@ -101,7 +101,7 @@ export default function Sidebar({ onSelectConversation }: SidebarProps) {
       </div>
 
       {showSearch && (
-        <div className="absolute bottom-20 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg border dark:border-gray-700 p-4 z-10">
+        <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-900 shadow-lg border dark:border-gray-700 p-4 z-20 rounded-md w-11/12 max-w-xs">
           <input
             type="text"
             value={query}
@@ -116,7 +116,7 @@ export default function Sidebar({ onSelectConversation }: SidebarProps) {
             {results.map((user) => (
               <li
                 key={user.id}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer rounded"
                 onClick={() => handleStartConversation(user.id)}
               >
                 {user.name}
