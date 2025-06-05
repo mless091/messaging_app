@@ -128,3 +128,5 @@ export default function Sidebar({ onSelectConversation }: SidebarProps) {
     </div>
   );
 }
+
+
