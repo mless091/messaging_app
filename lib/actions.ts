@@ -32,10 +32,10 @@ export async function handleSignup({ email, displayName, password }: { email: st
     });
 
     return { success: true };
-  } catch (error: any) {
-    console.error(error);
-    return { success: false, error: 'Something went wrong while creating the account.' };
-  }
+  } catch (error: unknown) {
+  console.error(error);
+  return { success: false, error: 'Something went wrong while creating the account.' };
+}
 }
 
 
@@ -61,7 +61,11 @@ export async function handleLogin(formData: FormData) {
     }
 
     redirect('/chat');
-  } catch (err: any) {
+  } catch (err: unknown) {
+  if (err instanceof Error) {
     throw new Error(err.message || 'Login failed. Please try again.');
   }
+  throw new Error('Login failed. Please try again.');
+}
+
 }

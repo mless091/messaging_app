@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
-import Link from 'next/link';
 
 export default function Home() {
   const [authMode, setAuthMode] = useState<'login' | 'signup' | null>(null);
