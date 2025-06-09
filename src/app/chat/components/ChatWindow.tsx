@@ -47,7 +47,7 @@ export default function ChatWindow({ conversation }: ChatWindowProps) {
 
     const intervalId = setInterval(() => {
       fetchMessages();
-    }, 5000);
+    }, 2500);
 
     return () => clearInterval(intervalId);
   }, [conversation, fetchMessages]);
