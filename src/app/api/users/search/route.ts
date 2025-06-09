@@ -16,33 +16,12 @@ export async function GET(req: NextRequest) {
     return NextResponse.json([]);
   }
 
- const results = await db.user.findMany({
-  where: {
-    AND: [
-      {
-        name: {
-          contains: search.toLowerCase(), // search lowercase
-        },
-      },
-      {
-        email: {
-          not: session.user.email,
-        },
-      },
-    ],
-  },
-  select: {
-    id: true,
-    name: true,
-  },
-  take: 50, // optionally increase results for filtering
-});
+  const results = await db.$queryRawUnsafe(`
+    SELECT id, name FROM "User"
+    WHERE name ILIKE '%' || $1 || '%'
+    AND email != $2
+    LIMIT 50
+  `, search, session.user.email);
 
-// Filter in JS if needed
-const filtered = results.filter((user) =>
-  user.name.toLowerCase().includes(search.toLowerCase())
-);
-
-return NextResponse.json(filtered);
-
+  return NextResponse.json(results);
 }
