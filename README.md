@@ -5,10 +5,6 @@ Features
 
     User authentication with NextAuth
 
-    Real-time messaging using WebSockets (via Socket.IO)
-
-    Conversation view with typing indicators and message history
-
     User search to start new conversations
 
     Responsive, polished chat UI
@@ -34,6 +30,18 @@ Tech Stack
 
     Auth: NextAuth.js with Credentials Provider
 
-    Real-Time: Socket.IO
-
     Deployment: Vercel
+    
+Future Improvements
+
+    Group chats
+
+    Websockets, instead of polling
+
+    Media attachments
+
+    Read receipts
+
+    Push notifications
+
+    User profile settings
